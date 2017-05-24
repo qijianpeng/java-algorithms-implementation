@@ -16,6 +16,8 @@ import java.util.Random;
  * http://en.wikipedia.org/wiki/Quick_sort
  *
  * @author Justin Wetherell <phishman3579@gmail.com>
+ * ---
+ * 2017.05.24 SEQUENCE, REVERSE sort
  */
 public class QuickSort<T extends Comparable<T>> {
 
