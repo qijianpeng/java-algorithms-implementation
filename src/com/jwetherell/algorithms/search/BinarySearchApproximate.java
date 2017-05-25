@@ -51,8 +51,6 @@ public class BinarySearchApproximate<T extends Comparable> {
         return recursiveFindDescending(value, sorted,middle+1, end, optimize);
     }
 
-
-
     private static  <T extends Comparable<T>>  int recursiveFind(T value, T[] sorted, int start,
                                                                  int end, boolean optimize) {
         if (end - start <= 1) {
