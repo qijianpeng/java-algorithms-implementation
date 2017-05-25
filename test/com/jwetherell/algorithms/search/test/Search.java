@@ -47,6 +47,22 @@ public class Search {
         index = BinarySearch.find(valueNotInArray, sorted, true);
         assertTrue("Brute force error. expected="+Integer.MAX_VALUE+" got="+index, (index==Integer.MAX_VALUE));
     }
+    @Test
+    public void testBinarySearchApproximate() {
+        int index = BinarySearch.find(valueInArray, sorted, false);
+        assertTrue("Brute force error. expected="+valueIndex+" got="+index, (index==valueIndex));
+        index = BinarySearch.find(valueNotInArray, sorted, false);
+        assertTrue("Brute force error. expected="+Integer.MAX_VALUE+" got="+index, (index==Integer.MAX_VALUE));
+    }
+
+    @Test
+    public void testOptimizedBinarySearchApproximate() {
+        int index = BinarySearch.find(valueInArray, sorted, true);
+        assertTrue("Brute force error. expected="+valueIndex+" got="+index, (index==valueIndex));
+        index = BinarySearch.find(valueNotInArray, sorted, true);
+        assertTrue("Brute force error. expected="+Integer.MAX_VALUE+" got="+index, (index==Integer.MAX_VALUE));
+    }
+
 
     @Test
     public void testInterpolationSearch() {

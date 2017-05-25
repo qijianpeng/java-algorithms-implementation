@@ -101,23 +101,23 @@ public class Sorts {
     @Test
     public void testQuickSorts() {
         // Quicksort
-        Integer[] result = QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, unsorted.clone());
+        Integer[] result = QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, unsorted.clone(), QuickSort.SORT_ORDER.SEQUENCE);
         assertTrue("Quick sort pivot firt unsorted error. result="+print(result), check(result));
-        result = QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, sorted.clone());
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, sorted.clone(), QuickSort.SORT_ORDER.SEQUENCE);
         assertTrue("Quick sort pivot firt sorted error. result="+print(result), check(result));
-        result = QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, reverse.clone());
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, reverse.clone(), QuickSort.SORT_ORDER.SEQUENCE);
         assertTrue("Quick sort pivot firt reverse error. result="+print(result), check(result));
-        result = QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, unsorted.clone());
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, unsorted.clone(), QuickSort.SORT_ORDER.SEQUENCE);
         assertTrue("Quick sort pivot middle unsorted error. result="+print(result), check(result));
-        result = QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, sorted.clone());
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, sorted.clone(), QuickSort.SORT_ORDER.SEQUENCE);
         assertTrue("Quick sort pivot middle sorted error. result="+print(result), check(result));
-        result = QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, reverse.clone());
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, reverse.clone(), QuickSort.SORT_ORDER.SEQUENCE);
         assertTrue("Quick sort pivot middle reverse error. result="+print(result), check(result));
-        result = QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, unsorted.clone());
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, unsorted.clone(), QuickSort.SORT_ORDER.SEQUENCE);
         assertTrue("Quick sort pivot random unsorted error. result="+print(result), check(result));
-        result = QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, sorted.clone());
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, sorted.clone(), QuickSort.SORT_ORDER.SEQUENCE);
         assertTrue("Quick sort pivot random sorted error. result="+print(result), check(result));
-        result = QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, reverse.clone());
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, reverse.clone(), QuickSort.SORT_ORDER.SEQUENCE);
         assertTrue("Quick sort pivot random reverse error. result="+print(result), check(result));
     }
 
