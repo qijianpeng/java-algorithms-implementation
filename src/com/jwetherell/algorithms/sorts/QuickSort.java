@@ -1,5 +1,6 @@
 package com.jwetherell.algorithms.sorts;
 
+import java.util.Comparator;
 import java.util.Random;
 
 /**
@@ -33,18 +34,28 @@ public class QuickSort<T extends Comparable<T>> {
 
     private QuickSort() { }
 
-    public static <T extends Comparable<T>> T[] sort(PIVOT_TYPE pivotType, T[] unsorted, SORT_ORDER so) {
+    public static <T extends Comparable<T>> T[] sort(PIVOT_TYPE pivotType, T[] unsorted) {
         int pivot = 0;
         if (pivotType == PIVOT_TYPE.MIDDLE) {
             pivot = unsorted.length/2;
         } else if (pivotType == PIVOT_TYPE.RANDOM) {
             pivot = getRandom(unsorted.length);
         }
-        if (so.equals(SORT_ORDER.SEQUENCE))sort(pivot, 0, unsorted.length - 1, unsorted);
-        else if(so.equals(SORT_ORDER.REVERSE))sortReverse(pivot, 0, unsorted.length - 1, unsorted);
+        sort(pivot, 0, unsorted.length - 1, unsorted);
         return unsorted;
     }
 
+    public static <T extends Comparable<T>> T[] sort(PIVOT_TYPE pivotType, T[] unsorted,
+                                                     SORT_ORDER so, Comparator<T> comparator) {
+        int pivot = 0;
+        if (pivotType == PIVOT_TYPE.MIDDLE) {
+            pivot = unsorted.length/2;
+        } else if (pivotType == PIVOT_TYPE.RANDOM) {
+            pivot = getRandom(unsorted.length);
+        }
+        sort(pivot, 0, unsorted.length - 1, unsorted, comparator);
+        return unsorted;
+    }
     private static <T extends Comparable<T>> void sort(int index, int start, int finish, T[] unsorted) {
         int pivotIndex = start + index;
         T pivot = unsorted[pivotIndex];
@@ -70,15 +81,17 @@ public class QuickSort<T extends Comparable<T>> {
             sort(pivotIndex, s, finish, unsorted);
         }
     }
-    private static <T extends Comparable<T>> void sortReverse(int index, int start, int finish, T[] unsorted) {
+
+    private static <T extends Comparable<T>> void sort(int index, int start, int finish,
+                                                       T[] unsorted, Comparator<T> comparator) {
         int pivotIndex = start + index;
         T pivot = unsorted[pivotIndex];
         int s = start;
         int f = finish;
         while (s <= f) {
-            while (unsorted[s].compareTo(pivot) > 0)
+            while (comparator.compare(unsorted[s], pivot) < 0)
                 s++;
-            while (unsorted[f].compareTo(pivot) < 0)
+            while (comparator.compare(unsorted[f], pivot) > 0)
                 f--;
             if (s <= f) {
                 swap(s, f, unsorted);
@@ -88,11 +101,11 @@ public class QuickSort<T extends Comparable<T>> {
         }
         if (start < f) {
             pivotIndex = getRandom((f - start) + 1);
-            sortReverse(pivotIndex, start, f, unsorted);
+            sort(pivotIndex, start, f, unsorted, comparator);
         }
-        if (s > finish) {
+        if (s < finish) {
             pivotIndex = getRandom((finish - s) + 1);
-            sortReverse(pivotIndex, s, finish, unsorted);
+            sort(pivotIndex, s, finish, unsorted, comparator);
         }
     }
     private static final int getRandom(int length) {
