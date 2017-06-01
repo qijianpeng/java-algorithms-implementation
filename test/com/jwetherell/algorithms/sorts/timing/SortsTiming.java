@@ -256,7 +256,7 @@ public class SortsTiming {
 
         @Override
         public Integer[] sort(Integer[] input) {
-            return QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, input, QuickSort.SORT_ORDER.SEQUENCE);
+            return QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, input);
         }
     }
 
@@ -268,7 +268,7 @@ public class SortsTiming {
 
         @Override
         public Integer[] sort(Integer[] input) {
-            return QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, input, QuickSort.SORT_ORDER.SEQUENCE);
+            return QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, input);
         }
     }
 
@@ -280,7 +280,7 @@ public class SortsTiming {
 
         @Override
         public Integer[] sort(Integer[] input) {
-            return QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, input, QuickSort.SORT_ORDER.SEQUENCE);
+            return QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, input);
         }
     }
 

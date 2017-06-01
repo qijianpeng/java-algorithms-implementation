@@ -2,6 +2,9 @@ package com.jwetherell.algorithms.sorts.test;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Random;
 
 import org.junit.Test;
@@ -101,24 +104,55 @@ public class Sorts {
     @Test
     public void testQuickSorts() {
         // Quicksort
-        Integer[] result = QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, unsorted.clone(), QuickSort.SORT_ORDER.SEQUENCE);
+        Integer[] result = QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, unsorted.clone());
         assertTrue("Quick sort pivot firt unsorted error. result="+print(result), check(result));
-        result = QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, sorted.clone(), QuickSort.SORT_ORDER.SEQUENCE);
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, sorted.clone());
         assertTrue("Quick sort pivot firt sorted error. result="+print(result), check(result));
-        result = QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, reverse.clone(), QuickSort.SORT_ORDER.SEQUENCE);
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, reverse.clone());
         assertTrue("Quick sort pivot firt reverse error. result="+print(result), check(result));
-        result = QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, unsorted.clone(), QuickSort.SORT_ORDER.SEQUENCE);
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, unsorted.clone());
         assertTrue("Quick sort pivot middle unsorted error. result="+print(result), check(result));
-        result = QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, sorted.clone(), QuickSort.SORT_ORDER.SEQUENCE);
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, sorted.clone());
         assertTrue("Quick sort pivot middle sorted error. result="+print(result), check(result));
-        result = QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, reverse.clone(), QuickSort.SORT_ORDER.SEQUENCE);
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, reverse.clone());
         assertTrue("Quick sort pivot middle reverse error. result="+print(result), check(result));
-        result = QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, unsorted.clone(), QuickSort.SORT_ORDER.SEQUENCE);
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, unsorted.clone());
         assertTrue("Quick sort pivot random unsorted error. result="+print(result), check(result));
-        result = QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, sorted.clone(), QuickSort.SORT_ORDER.SEQUENCE);
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, sorted.clone());
         assertTrue("Quick sort pivot random sorted error. result="+print(result), check(result));
-        result = QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, reverse.clone(), QuickSort.SORT_ORDER.SEQUENCE);
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, reverse.clone());
         assertTrue("Quick sort pivot random reverse error. result="+print(result), check(result));
+
+        Comparator<Integer> c =  new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1.compareTo(o2);
+            }
+        };
+        Comparator<Integer> cr = Collections.reverseOrder(c);
+
+
+
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, unsorted.clone(),cr);
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, result,c);
+        assertTrue("Quick sort pivot firt unsorted error. result="+print(result), check(result));
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, sorted.clone(),c);
+        assertTrue("Quick sort pivot firt sorted error. result="+print(result), check(result));
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.FIRST, reverse.clone(),c);
+        assertTrue("Quick sort pivot firt reverse error. result="+print(result), check(result));
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, unsorted.clone(),c);
+        assertTrue("Quick sort pivot middle unsorted error. result="+print(result), check(result));
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, sorted.clone(),c);
+        assertTrue("Quick sort pivot middle sorted error. result="+print(result), check(result));
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.MIDDLE, reverse.clone(),c);
+        assertTrue("Quick sort pivot middle reverse error. result="+print(result), check(result));
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, unsorted.clone(),c);
+        assertTrue("Quick sort pivot random unsorted error. result="+print(result), check(result));
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, sorted.clone(),c);
+        assertTrue("Quick sort pivot random sorted error. result="+print(result), check(result));
+        result = QuickSort.sort(QuickSort.PIVOT_TYPE.RANDOM, reverse.clone(),c);
+        assertTrue("Quick sort pivot random reverse error. result="+print(result), check(result));
+
     }
 
     @Test

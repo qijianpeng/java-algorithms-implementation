@@ -4,6 +4,7 @@ package com.jwetherell.algorithms.search.inserts;
 import com.jwetherell.algorithms.search.BinarySearchApproximate;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
